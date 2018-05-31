@@ -4,6 +4,8 @@ This is a single .net core API microservice with SQL Server Express on Linux bac
 
 ## Setup
 
+dotnet new webapi -o peopleapi under .net core 2.1.x
+
 
 ## Building Containers
 
