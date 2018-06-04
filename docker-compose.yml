@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  peopleapi:
+    image: peopleapi
+    ports:
+      - 8080:8080
+    environment:
+      - ASPNETCORE_URLS=http://*:8080
+      - ASPNETCORE_ENVIRONMENT=Testing
+      - peopleapi-context=server=peopleapi-db;user id=peopleAPI;password=mypassword;Initial Catalog=peopleAPI
+    depends_on:
+      ppeopleapi-db
+
+  peopleapi-db:
+    image: peopleapi-db
+    

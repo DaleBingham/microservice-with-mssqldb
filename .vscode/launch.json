@@ -32,7 +32,7 @@
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
                 "ASPNETCORE_URLS" : "http://*:8080",
-                "peopleapi-context": "server=USBWI03-BINGHAM\\SQLEXPRESS; user id=peopleAPI; password=mypassword; Initial Catalog=peopleAPI"
+                "peopleapi-context" : "server=USBWI03-BINGHAM\\SQLEXPRESS; user id=peopleAPI; password=mypassword; Initial Catalog=peopleAPI"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
