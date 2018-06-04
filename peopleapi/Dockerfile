@@ -14,8 +14,12 @@ RUN dotnet publish -c Release -o out
 FROM microsoft/dotnet:2.1-runtime
 WORKDIR /app
 COPY --from=build-env /app/out ./
+
+# setup the environment variables
 ENV ASPNETCORE_URLS http://*:8080
 ENV ASPNETCORE_ENVIRONMENT Testing
+# very very very very bad practice. Should use Hashicorp Vault or some other similar concept
+ENV peopleapi-context server=USBWI03-BINGHAM\\SQLEXPRESS; user id=peopleAPI; password=mypassword; Initial Catalog=peopleAPI
 
 EXPOSE 8080
 ENTRYPOINT ["dotnet", "peopleapi.dll"]
