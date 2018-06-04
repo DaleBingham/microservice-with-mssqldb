@@ -8,9 +8,9 @@ services:
     environment:
       - ASPNETCORE_URLS=http://*:8080
       - ASPNETCORE_ENVIRONMENT=Testing
-      - peopleapi-context=server=peopleapi-db;user id=peopleAPI;password=mypassword;Initial Catalog=peopleAPI
+      - peopleapi-context=server=peopleapi-db;user id=peopleAPI;password=myP@ssw0rd;Initial Catalog=peopleAPI
     depends_on:
-      ppeopleapi-db
+      - peopleapi-db
 
   peopleapi-db:
     image: peopleapi-db
