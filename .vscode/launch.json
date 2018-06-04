@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/bin/Debug/netcoreapp2.0/peopleapi.dll",
+            "program": "${workspaceFolder}/peopleapi/bin/Debug/netcoreapp2.0/peopleapi.dll",
             "args": [],
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/peopleapi",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
@@ -31,7 +31,8 @@
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "peopleapi-context" : "server=localhost; user id=peopleAPI; password=myP@ssw0rd; initial catalog=peopleAPI;"
+                "ASPNETCORE_URLS" : "http://*:8080",
+                "peopleapi-context": "server=USBWI03-BINGHAM\\SQLEXPRESS; user id=peopleAPI; password=mypassword; Initial Catalog=peopleAPI"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"

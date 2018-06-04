@@ -4,41 +4,37 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using peopleapi.Models;
+using peopleapi.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace peopleapi.Controllers
 {
+    /// <summary>
+    /// This class is the main API class that connects to a database to send back information on People.
+    /// </summary>
     [Route("api/[controller]")]
     public class PeopleController : Controller
     {
+
+        private readonly peopleAPIContext _context;
+
+        public PeopleController(peopleAPIContext context) {
+            // get the database context
+            _context = context;
+        }
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<Person> Get()
+        public async Task<IActionResult> Get()
         {
-            List<Person> people = new List<Person>();
-            Person p = new Person();
-            p.FirstName = "Richard";
-            p.LastName = "Cranium";
-            p.City = "Annapolis";
-            p.State = "Maryland";
-            p.ZIP = "21403";
-            p.Email = "Richard.Cranium@me.com";
-            people.Add(p);
-            p = new Person();
-            p.FirstName = "Peter";
-            p.LastName = "O'Toole";
-            p.City = "Crofton";
-            p.State = "Maryland";
-            p.ZIP = "21114";
-            p.Email = "Peter.OToole@me.com";
-            people.Add(p);
-            return people;
+            return Json(await _context.Person.OrderBy(x => x.LastName).OrderBy(y => y.FirstName).ToListAsync());
         }
 
         // GET api/values/GUID-TO-PERSON
         [HttpGet("{id}")]
-        public string Get(Guid id)
+        public async Task<IActionResult> Get(Guid id)
         {
-            return "value";
+           return Json(await _context.Person.Where(z => z.PersonId == id).SingleOrDefaultAsync());
         }
 
         // POST api/values
